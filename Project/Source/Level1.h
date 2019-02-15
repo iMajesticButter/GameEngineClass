@@ -79,6 +79,8 @@ namespace Levels
 
 		SpriteSource* ss;
 
+		Animation* anim;
+
 	};
 }
 

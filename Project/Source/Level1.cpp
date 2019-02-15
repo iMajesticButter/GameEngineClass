@@ -13,6 +13,7 @@
 #include <Texture.h>
 #include "Sprite.h"
 #include "SpriteSource.h"
+#include "Animation.h"
 
 #include <iostream>
 #include <Engine.h>
@@ -36,11 +37,12 @@ namespace Levels {
 
 		//--------
 
-		mesh = CreateQuadMesh(Vector2D(1.0f/3.0f, 1.0f/5.0f), Vector2D(0.5, 0.5));
+		//mesh = CreateQuadMesh(Vector2D(1.0f/3.0f, 1.0f/5.0f), Vector2D(3, 0.25f));
+		mesh = CreateQuadMesh(Vector2D(1.0f / 3.0f, 1.0f / 5.0f), Vector2D(0.5f, 0.5f));
+		
+		//texture = Texture::CreateTextureFromFile("Monkey.png");
 
-		texture = Texture::CreateTextureFromFile("Monkey.png");
-
-		ss = new SpriteSource(3, 5, texture);
+		ss = new SpriteSource("Monkey.png", 3, 5);
 
 		//mesh = CreateTriangleMesh(Colors::Red, Colors::Green, Colors::Blue);
 
@@ -53,6 +55,10 @@ namespace Levels {
 		//sprite = new Sprite(mesh);
 
 		sprite = new Sprite(mesh, Colors::White, ss, 0);
+
+		anim = new Animation(sprite);
+
+		anim->Play(0, 8, 0.1f, true);
 
 	}
 
@@ -73,8 +79,9 @@ namespace Levels {
 		//Graphics::GetInstance().SetTransform(Vector2D(0, 0), Vector2D(200.0f, 200.0f), 0);
 
 		//mesh->Draw();
-
+		anim->Update(dt);
 		sprite->Draw();
+		
 	}
 
 	// Shutdown any memory associated with Level 1.

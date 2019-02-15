@@ -50,8 +50,6 @@ void Sprite::Draw() {
 
 	m_mesh->Draw();
 
-	++m_frameIndex;
-
 }
 
 // Set a sprite's transparency (between 0.0f and 1.0f).

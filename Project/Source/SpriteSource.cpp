@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "SpriteSource.h"
 
+#include <Texture.h>
 #include <Vector2D.h>
 
 //------------------------------------------------------------------------------
@@ -16,10 +17,21 @@
 //	 numCols = The number of columns in the sprite sheet.
 //	 numRows = The number of rows in the sprite sheet.
 //	 texture = A pointer to a texture that has been loaded by the Alpha Engine.
-SpriteSource::SpriteSource(int numCols, int numRows, Texture* texture) {
+SpriteSource::SpriteSource(Texture* texture, int numCols, int numRows) {
 	m_numCols = numCols;
 	m_numRows = numRows;
 	m_texture = texture;
+}
+
+// Allocate a new sprite source object.
+// Params:
+//	 numCols = The number of columns in the sprite sheet.
+//	 numRows = The number of rows in the sprite sheet.
+//	 texture = The name of the texture asset to use.
+SpriteSource::SpriteSource(std::string texture, int numCols, int numRows) {
+	m_numCols = numCols;
+	m_numRows = numRows;
+	m_texture = Texture::CreateTextureFromFile(texture);
 }
 
 // Returns a pointer to the texture, for the purposes of rendering a sprite.

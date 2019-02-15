@@ -42,7 +42,14 @@ public:
 	//	 numCols = The number of columns in the sprite sheet.
 	//	 numRows = The number of rows in the sprite sheet.
 	//	 texture = A pointer to a texture that has been loaded by the Alpha Engine.
-	SpriteSource(int numCols = 1, int numRows = 1, Texture* texture = nullptr);
+	SpriteSource(Texture* texture = nullptr, int numCols = 1, int numRows = 1);
+
+	// Allocate a new sprite source object.
+	// Params:
+	//	 numCols = The number of columns in the sprite sheet.
+	//	 numRows = The number of rows in the sprite sheet.
+	//	 texture = The name of the texture asset to use.
+	SpriteSource(std::string texture, int numCols = 1, int numRows = 1);
 
 	// Returns a pointer to the texture, for the purposes of rendering a sprite.
 	// Returns:

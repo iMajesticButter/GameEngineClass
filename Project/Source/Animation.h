@@ -45,8 +45,8 @@ public:
 	//   frameStart = The starting frame for the sequence.
 	//	 frameCount = The number of frames in the sequence.
 	//	 frameDuration = The amount of time to wait between frames (in seconds).
-	//	 isLooping = True if the animation loops, false otherwise.
-	void Play(unsigned frameStart, unsigned frameCount, float frameDuration, bool isLooping);
+	//	 Loop = True if the animation loops, false otherwise.
+	void Play(unsigned frameStart, unsigned frameCount, float frameDuration, bool Loop);
 
 	// Update the animation.
 	// Params:
@@ -58,34 +58,54 @@ public:
 	//	 The value in isDone.
 	bool IsDone() const;
 
+	//Set the frame duration
+	//Params:
+	//  frameDuration = The amount of time to wait between frames (in seconds).
+	void setFrameDuration(float frameDuration);
+
+	//Set the current frame
+	//Params:
+	//  frame = The frame to go to
+	void setFrame(unsigned frame);
+
+	//Determine the number of frames
+	//Returns:
+	//  the number of frames
+	unsigned getFrameCount() const;
+
+	//Determine the current frame
+	//Returns:
+	//  the current frame index
+	unsigned getFrame() const;
+
 private:
 	// The current frame being displayed.
-	unsigned frameIndex;
+	unsigned m_frameIndex;
 
 	// The maximum number of frames in the sequence.
-	unsigned frameCount;
+	unsigned m_frameCount;
 
 	// The starting frame of the sequence.
-	unsigned frameStart;
+	unsigned m_frameStart;
 
 	// The time remaining for the current frame.
-	float frameDelay;
+	float m_frameDelay;
 
 	// The amount of time to display each frame.
 	// (Used only when playing simple animations (0 .. numFrame).)
-	float frameDuration;
+	float m_frameDuration;
 
 	// True if the animation is running; false if the animation has stopped.
-	bool isRunning;
+	bool m_isRunning;
 
 	// True if the animation loops back to the beginning.
-	bool isLooping;
+	bool m_isLooping;
 
 	// True if the end of the animation has been reached, false otherwise.
 	// (Hint: This should be true for only one game loop.)
-	bool isDone;
+	bool m_isDone;
 
 	// The sprite this animation will manipulate.
-	Sprite* sprite;
+	Sprite* m_sprite;
 };
 //----------------------------------------------------------------------------
