@@ -46,6 +46,7 @@ void Sprite::Draw() {
 		Graphics::GetInstance().SetTexture(nullptr);
 	}
 
+	Graphics::GetInstance().SetSpriteBlendColor(m_color);
 	Graphics::GetInstance().SetTransform(Vector2D(0, 0), Vector2D(200, 200), 0);
 
 	m_mesh->Draw();

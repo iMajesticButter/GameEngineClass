@@ -58,7 +58,7 @@ namespace Levels {
 
 		anim = new Animation(sprite);
 
-		anim->Play(0, 8, 0.1f, true);
+		anim->Play(0, 8, 0.01f, true);
 
 	}
 
@@ -66,11 +66,10 @@ namespace Levels {
 	// Params:
 	//	 dt = Change in time (in seconds) since the last game loop.
 	void Level1::Update(float dt) {
-		UNREFERENCED_PARAMETER(dt);
 
-		//std::cout << "Level1::Update" << std::endl;
 		
-		--lives;
+		
+		lives = lives + (unsigned)(dt * 0.01f / anim->getFrameCount()) * anim->getFrame();
 		if (lives <= 0) {
 			//GetSpace()->SetLevel(new Level2);
 		}
@@ -82,6 +81,12 @@ namespace Levels {
 		anim->Update(dt);
 		sprite->Draw();
 		
+		Graphics::GetInstance().SetBackgroundColor(Color(dt*100, (sin((float)lives / 20) + 1) * (dt*100), (float)anim->getFrame()/8));
+
+		sprite->SetColor(Color(1 - (dt * 130) * 0.1f, 1 - ((sin((float)lives / 27) + 1)) * 0.1f, 1 - ((float)anim->getFrame() / 7) * 0.1f));
+
+		sprite->SetAlpha(1.0f);
+
 	}
 
 	// Shutdown any memory associated with Level 1.
