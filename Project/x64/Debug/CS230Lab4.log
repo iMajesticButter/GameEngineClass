@@ -1,4 +1,1 @@
-﻿  Level1.cpp
-  CS230Lab4.vcxproj -> C:\Users\projectfun_user\Documents\GitHub\GameEngineClass\Project\\x64\Debug\CS230Lab4.exe
-  glfw\lib\x64\glfw3.dll
-  1 File(s) copied
+﻿LINK : fatal error LNK1104: cannot open file 'BetaLow_x64_D.lib'
