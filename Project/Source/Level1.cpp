@@ -58,7 +58,7 @@ namespace Levels {
 
 		anim = new Animation(sprite);
 
-		anim->Play(0, 8, 0.01f, true);
+		anim->Play(0, 8, 0.05f, true);
 
 	}
 
@@ -69,7 +69,7 @@ namespace Levels {
 
 		
 		
-		//lives = lives + (unsigned)(dt * 0.01f / anim->getFrameCount()) * anim->getFrame();
+		lives = lives + (unsigned)(((float)anim->getFrame()*4) * (dt * (float)anim->getFrameCount()));
 		if (lives <= 0) {
 			//GetSpace()->SetLevel(new Level2);
 		}
@@ -81,11 +81,11 @@ namespace Levels {
 		anim->Update(dt);
 		sprite->Draw();
 		
-		//Graphics::GetInstance().SetBackgroundColor(Color(dt*100, (sin((float)lives / 20) + 1) * (dt*100), (float)anim->getFrame()/8));
+		Graphics::GetInstance().SetBackgroundColor(Color(dt*100, (sin((float)lives / 20) + 1) * (dt*100), (float)anim->getFrame()/8));
 
-		//sprite->SetColor(Color(1 - (dt * 130) * 0.1f, 1 - ((sin((float)lives / 27) + 1)) * 0.1f, 1 - ((float)anim->getFrame() / 7) * 0.1f));
+		sprite->SetColor(Color(((float)anim->getFrame() / 8.0f),1.0f, sin((float)lives / 20) * (dt * 2.0f)));
 
-		//sprite->SetAlpha(1.0f);
+		sprite->SetAlpha(1.0f);
 
 	}
 
