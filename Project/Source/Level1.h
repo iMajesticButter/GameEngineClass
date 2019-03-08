@@ -28,6 +28,7 @@ typedef class SpriteSource SpriteSource;
 typedef class Mesh Mesh;
 typedef class Sprite Sprite;
 typedef class Animation Animation;
+typedef class Transform Transform;
 
 //------------------------------------------------------------------------------
 // Public Structures:
@@ -80,6 +81,8 @@ namespace Levels
 		SpriteSource* ss;
 
 		Animation* anim;
+
+		Transform* transform;
 
 	};
 }

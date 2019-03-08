@@ -3,8 +3,10 @@
 //------------------------------------------------------------------------------
 
 #include "stdafx.h"
+
 #include "Sprite.h"
 #include "SpriteSource.h"
+#include "Transform.h"
 
 #include <Vector2D.h>
 #include <Graphics.h>
@@ -15,25 +17,27 @@
 //------------------------------------------------------------------------------
 
 // Create a new sprite object.
-Sprite::Sprite() {
+Sprite::Sprite(Transform* transform) {
 
 	m_frameIndex = 0;
 	m_spriteSource = nullptr;
 	m_mesh = nullptr;
 	m_color = Colors::White;
+	m_transform = transform;
 
 }
 
-Sprite::Sprite(Mesh* mesh, Color color, SpriteSource* spriteSource, unsigned int frameIndex) {
+Sprite::Sprite(Transform* transform, Mesh* mesh, Color color, SpriteSource* spriteSource, unsigned int frameIndex) {
 	m_mesh = mesh;
 	m_color = color;
 	m_spriteSource = spriteSource;
 	m_frameIndex = frameIndex;
+	m_transform = transform;
 }
 
 // Draw a sprite (Sprite can be textured or untextured).
 void Sprite::Draw() {
-	if (m_mesh == nullptr) {
+	if (m_mesh == nullptr || m_transform == nullptr) {
 		return;
 	}
 
@@ -47,7 +51,7 @@ void Sprite::Draw() {
 	}
 
 	Graphics::GetInstance().SetSpriteBlendColor(m_color);
-	Graphics::GetInstance().SetTransform(Vector2D(0, 0), Vector2D(200, 200), 0);
+	Graphics::GetInstance().SetTransform(m_transform->GetMatrix());
 
 	m_mesh->Draw();
 

@@ -25,6 +25,7 @@
 
 typedef class Mesh Mesh;
 typedef class SpriteSource SpriteSource;
+typedef class Transform Transform;
 
 //------------------------------------------------------------------------------
 // Public Structures:
@@ -40,8 +41,8 @@ public:
 	//------------------------------------------------------------------------------
 
 	// Create a new sprite object.
-	Sprite();
-	Sprite(Mesh* mesh = nullptr, Color color = Colors::White, SpriteSource* spriteSource = nullptr, unsigned int frameIndex = 0);
+	Sprite(Transform* transform);
+	Sprite(Transform* transform, Mesh* mesh = nullptr, Color color = Colors::White, SpriteSource* spriteSource = nullptr, unsigned int frameIndex = 0);
 
 	// Draw a sprite (Sprite can be textured or untextured).
 	void Draw();
@@ -95,6 +96,9 @@ private:
 
 	// Color used for blending/tint
 	Color m_color;
+
+	// Transform for determining where to draw
+	Transform* m_transform;
 };
 
 //------------------------------------------------------------------------------

@@ -22,6 +22,9 @@
     <Filter Include="High-Level API\Spaces">
       <UniqueIdentifier>{27774d28-e5e6-4932-9794-c1ddede64c03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="High-Level API\Transforms">
+      <UniqueIdentifier>{5ce93aef-0c64-4da5-b337-8f623d01a849}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp" />
@@ -52,6 +55,12 @@
     <ClCompile Include="Source\Animation.cpp">
       <Filter>High-Level API\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Transform.cpp">
+      <Filter>High-Level API\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Physics.cpp">
+      <Filter>High-Level API\Transforms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\stdafx.h">
@@ -80,6 +89,15 @@
     </ClInclude>
     <ClInclude Include="Source\MeshHelper.h">
       <Filter>High-Level API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Physics.h">
+      <Filter>High-Level API\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Transform.h">
+      <Filter>High-Level API\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Behaviors.h">
+      <Filter>Game\Behaviors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

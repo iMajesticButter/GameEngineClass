@@ -3,9 +3,11 @@
 //------------------------------------------------------------------------------
 
 #include "stdafx.h"
+
 #include "Level1.h"
 #include "Space.h"
 #include "Level2.h"
+#include "Transform.h"
 
 #include "MeshHelper.h"
 #include <Mesh.h>
@@ -54,7 +56,9 @@ namespace Levels {
 		
 		//sprite = new Sprite(mesh);
 
-		sprite = new Sprite(mesh, Colors::White, ss, 0);
+		transform = new Transform(Vector2D(0, 0), 0, Vector2D(200, 200));
+
+		sprite = new Sprite(transform, mesh, Colors::White, ss, 0);
 
 		anim = new Animation(sprite);
 
@@ -69,7 +73,7 @@ namespace Levels {
 
 		
 		
-		lives = lives + (unsigned)(((float)anim->getFrame()*4) * (dt * (float)anim->getFrameCount()));
+		//lives = lives + (unsigned)(((float)anim->getFrame()*4) * (dt * (float)anim->getFrameCount()));
 		if (lives <= 0) {
 			//GetSpace()->SetLevel(new Level2);
 		}
@@ -81,9 +85,9 @@ namespace Levels {
 		anim->Update(dt);
 		sprite->Draw();
 		
-		Graphics::GetInstance().SetBackgroundColor(Color(dt*100, (sin((float)lives / 20) + 1) * (dt*100), (float)anim->getFrame()/8));
+		//Graphics::GetInstance().SetBackgroundColor(Color(dt*100, (sin((float)lives / 20) + 1) * (dt*100), (float)anim->getFrame()/8));
 
-		sprite->SetColor(Color(((float)anim->getFrame() / 8.0f),1.0f, sin((float)lives / 20) * (dt * 2.0f)));
+		//sprite->SetColor(Color(((float)anim->getFrame() / 8.0f),1.0f, sin((float)lives / 20) * (dt * 2.0f)));
 
 		sprite->SetAlpha(1.0f);
 
@@ -92,6 +96,11 @@ namespace Levels {
 	// Shutdown any memory associated with Level 1.
 	void Level1::Shutdown() {
 		//std::cout << "Level1::Shutdown" << std::endl;
+
+		delete anim;
+		delete sprite;
+		delete transform;
+
 	}
 
 	// Unload the resources associated with Level 1.
