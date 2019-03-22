@@ -28,13 +28,15 @@ class Physics;
 // Public Functions:
 //------------------------------------------------------------------------------
 
-namespace Behaviors
-{
+namespace Behaviors {
+
+	
+
 	// Movement behavior for the triangle/ship.
 	// Params:
 	//	 transform = The transform component of the ship.
 	//   physics = The physics component of the ship.
-	void UpdateShip(Transform* transform, Physics* physics);
+	void UpdateShip(Transform* transform, Physics* physics, float dt);
 	
 	// Movement behavior for the monkey.
 	// Params:

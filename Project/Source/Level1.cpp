@@ -8,6 +8,8 @@
 #include "Space.h"
 #include "Level2.h"
 #include "Transform.h"
+#include "Physics.h"
+#include "Behaviors.h"
 
 #include "MeshHelper.h"
 #include <Mesh.h>
@@ -40,11 +42,11 @@ namespace Levels {
 		//--------
 
 		//mesh = CreateQuadMesh(Vector2D(1.0f/3.0f, 1.0f/5.0f), Vector2D(3, 0.25f));
-		mesh = CreateQuadMesh(Vector2D(1.0f / 3.0f, 1.0f / 5.0f), Vector2D(0.5f, 0.5f));
+		mesh = CreateQuadMesh(Vector2D(1.0f / 1.0f, 1.0f / 1.0f), Vector2D(0.5f, 0.5f));
 		
 		//texture = Texture::CreateTextureFromFile("Monkey.png");
 
-		ss = new SpriteSource("Monkey.png", 3, 5);
+		ss = new SpriteSource("SpaceShip.png", 1, 1);
 
 		//mesh = CreateTriangleMesh(Colors::Red, Colors::Green, Colors::Blue);
 
@@ -58,11 +60,18 @@ namespace Levels {
 
 		transform = new Transform(Vector2D(0, 0), 0, Vector2D(200, 200));
 
+		physics = new Physics(transform);
+
+		physics->SetVelocity(Vector2D(0, 0));
+		physics->SetAngularVelocity(0);
+		
+		Physics::Gravity = Vector2D(0, 0);
+
 		sprite = new Sprite(transform, mesh, Colors::White, ss, 0);
 
 		anim = new Animation(sprite);
 
-		anim->Play(0, 8, 0.05f, true);
+		//anim->Play(0, 8, 0.05f, true);
 
 	}
 
@@ -82,6 +91,9 @@ namespace Levels {
 		//Graphics::GetInstance().SetTransform(Vector2D(0, 0), Vector2D(200.0f, 200.0f), 0);
 
 		//mesh->Draw();
+		Behaviors::UpdateShip(transform, physics, dt);
+		physics->Update(dt);
+		physics->FixedUpdate(dt);
 		anim->Update(dt);
 		sprite->Draw();
 		

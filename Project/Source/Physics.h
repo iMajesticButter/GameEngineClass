@@ -72,6 +72,26 @@ public:
 	//	 A float representing the new angular velocity.
 	float GetAngularVelocity() const;
 
+	// Set the drag coeficient of a physics component.
+	// Params:
+	//	 dCd = New value for the drag coeficient.
+	void SetDragCoefficient(float dCd);
+
+	// Get the drag coeficient of a physics component.
+	// returns:
+	//	 A float representing the drag coeficient.
+	float GetDragCoefficient() const;
+
+	// Set the angular drag coeficient of a physics component.
+	// Params:
+	//	 adCd = New value for the angular drag coeficient.
+	void SetAngularDragCoefficient(float adCd);
+
+	// Get the drag angular coeficient of a physics component.
+	// returns:
+	//	 A float representing the rotational drag coeficient.
+	float GetAngularDragCoefficient() const;
+
 	// Set the mass of the physics component.
 	// Params:
 	//   mass = The new mass of the physics component.
@@ -82,6 +102,11 @@ public:
 	//	 force = A force vector with direction and magnitude.
 	void AddForce(const Vector2D& force);
 
+	// Add an angular force to the object.
+	// Params:
+	//	 force = A rotational force 
+	void AddAngularForce(const float force);
+
 	// Get the acceleration of a physics component.
 	// Returns:
 	//	 A reference to the component's acceleration structure.
@@ -91,6 +116,13 @@ public:
 	// Returns: 
 	//   A reference to the component's oldTranslation structure,
 	const Vector2D& GetOldTranslation() const;
+
+	//------------------------------------------------------------------------------
+	// Static Variables:
+	//------------------------------------------------------------------------------
+
+	static Vector2D Gravity;
+	static float AirDencity;
 
 private:
 	//------------------------------------------------------------------------------

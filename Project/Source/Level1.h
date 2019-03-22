@@ -29,6 +29,7 @@ typedef class Mesh Mesh;
 typedef class Sprite Sprite;
 typedef class Animation Animation;
 typedef class Transform Transform;
+typedef class Physics Physics;
 
 //------------------------------------------------------------------------------
 // Public Structures:
@@ -83,6 +84,8 @@ namespace Levels
 		Animation* anim;
 
 		Transform* transform;
+
+		Physics* physics;
 
 	};
 }
