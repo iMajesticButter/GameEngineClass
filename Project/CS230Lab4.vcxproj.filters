@@ -25,6 +25,9 @@
     <Filter Include="High-Level API\Transforms">
       <UniqueIdentifier>{5ce93aef-0c64-4da5-b337-8f623d01a849}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helper">
+      <UniqueIdentifier>{701b24f6-f186-4212-b2f3-a56b33de49c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp" />
@@ -64,6 +67,9 @@
     <ClCompile Include="Source\Ship.cpp">
       <Filter>Game\Behaviors</Filter>
     </ClCompile>
+    <ClCompile Include="Source\MathUtil.cpp">
+      <Filter>Helper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\stdafx.h">
@@ -101,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="Source\Behaviors.h">
       <Filter>Game\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MathUtil.h">
+      <Filter>Helper</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

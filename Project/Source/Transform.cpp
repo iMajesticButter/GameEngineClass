@@ -5,6 +5,7 @@
 #include "stdafx.h"
 
 #include "Transform.h"
+#include "MathUtil.h"
 
 //------------------------------------------------------------------------------
 // Public Functions:

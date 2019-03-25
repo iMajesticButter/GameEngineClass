@@ -66,6 +66,7 @@ namespace Levels {
 		physics->SetAngularVelocity(0);
 		
 		Physics::Gravity = Vector2D(0, 0);
+		Physics::AirDencity = 0.2f;
 
 		sprite = new Sprite(transform, mesh, Colors::White, ss, 0);
 

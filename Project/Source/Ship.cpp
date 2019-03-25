@@ -4,12 +4,13 @@
 
 #include "Physics.h"
 #include "Transform.h"
+#include "MathUtil.h"
+
 #include <Input.h>
 #include <Graphics.h>
 
 float lastError = 0;
 float aError = 0;
-const double nintyDegRad = (M_PI / 180);
 
 void Behaviors::UpdateShip(Transform* transform, Physics* physics, float dt) {
 
@@ -22,7 +23,10 @@ void Behaviors::UpdateShip(Transform* transform, Physics* physics, float dt) {
 	Vector2D mouseVec = transform->GetTranslation() - mousePos;
 
 	//get mouse angle
-	float mouseA = atan2(mouseVec.y, mouseVec.x) + (float)(90 * nintyDegRad);
+	float mouseA = MathUtil::Wrap(atan2(mouseVec.y, mouseVec.x) + (float)(90 * MathUtil::DegToRad), 0.0f, (float)(2.0f*M_PI));
+
+	//get ship angle
+	float shipA = MathUtil::Wrap(transform->GetRotation(), 0.0f, (float)(2.0f*M_PI));
 
 	//---pid controller to turn to mouse---
 	float P = 1;
@@ -30,7 +34,8 @@ void Behaviors::UpdateShip(Transform* transform, Physics* physics, float dt) {
 	float D = 0.5f;
 
 	//get error
-	float error = abs(mouseA - transform->GetRotation());
+	//float error = abs(mouseA - shipA);
+	float error = abs(atan2(sin(shipA - mouseA), cos(shipA - mouseA)));
 
 	//algorithm
 	aError += error * dt;
@@ -45,7 +50,7 @@ void Behaviors::UpdateShip(Transform* transform, Physics* physics, float dt) {
 		physics->AddAngularForce(angularForce*0.1f);
 	}*/
 
-	Vector2D n = Vector2D(cos(transform->GetRotation() + (180 * (float)nintyDegRad)), sin(transform->GetRotation() + (180 * (float)nintyDegRad)));
+	Vector2D n = Vector2D(cos(shipA + (180 * (float)MathUtil::DegToRad)), sin(shipA + (180 * (float)MathUtil::DegToRad)));
 
 	//Vector2D n = Vector2D(cos(transform->GetRotation()), sin(transform->GetRotation()));
 
@@ -61,7 +66,9 @@ void Behaviors::UpdateShip(Transform* transform, Physics* physics, float dt) {
 	system("cls");
 
 	std::cout << "mouseA: " << mouseA << std::endl;
-	std::cout << "ship A: " << transform->GetRotation() << std::endl;
+	std::cout << "mousAd: " << mouseA * MathUtil::RadToDeg << std::endl;
+	std::cout << "ship A: " << shipA << std::endl;
+	std::cout << "shipAd: " << shipA * MathUtil::RadToDeg << std::endl;
 	std::cout << "aForce: " << angularForce << std::endl;
 	std::cout << "error: " << error << std::endl;
 	std::cout << "--------------------------------------------" << std::endl;
