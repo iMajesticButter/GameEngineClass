@@ -28,10 +28,14 @@ void Behaviors::UpdateShip(Transform* transform, Physics* physics, float dt) {
 	//get ship angle
 	float shipA = MathUtil::Wrap(transform->GetRotation(), 0.0f, (float)(2.0f*M_PI));
 
+	//get ship vector
+	Vector2D shipVec = Vector2D(cos(shipA + (float)MathUtil::DegToRad * 90), sin(shipA + (float)MathUtil::DegToRad * 90));
+
 	//---pid controller to turn to mouse---
 	float P = 1;
 	float I = 0;
 	float D = 0.5f;
+	float maxAngularForce = 0.45f;
 
 	//get error
 	//float error = abs(mouseA - shipA);
@@ -42,6 +46,9 @@ void Behaviors::UpdateShip(Transform* transform, Physics* physics, float dt) {
 	float dError = (error - lastError) / dt;
 	lastError = error;
 	float angularForce = (error * P) + (aError * I) + (dError * D);
+
+	//apply force limiter
+	angularForce = std::clamp(angularForce, -maxAngularForce, maxAngularForce);
 
 	//apply angular force
 	/*if (transform->GetRotation() > mouseA) {
@@ -59,18 +66,18 @@ void Behaviors::UpdateShip(Transform* transform, Physics* physics, float dt) {
 		physics->AddAngularForce(-angularForce * 0.1f);
 	} else if (mouseVec.DotProduct(n) < 0) {
 		//obtuse
-		physics->AddAngularForce(angularForce*0.1f);
+		physics->AddAngularForce(angularForce * 0.1f);
 	}
 
-	//debug
-	system("cls");
+	
+	//---movement---
+	//variables
+	float movementSpeed = 125;
 
-	std::cout << "mouseA: " << mouseA << std::endl;
-	std::cout << "mousAd: " << mouseA * MathUtil::RadToDeg << std::endl;
-	std::cout << "ship A: " << shipA << std::endl;
-	std::cout << "shipAd: " << shipA * MathUtil::RadToDeg << std::endl;
-	std::cout << "aForce: " << angularForce << std::endl;
-	std::cout << "error: " << error << std::endl;
-	std::cout << "--------------------------------------------" << std::endl;
+	//move when w is pressed
+	if (Input::GetInstance().CheckHeld('W')) {
+		physics->AddForce(shipVec * movementSpeed);
+	}
+	
 
 }

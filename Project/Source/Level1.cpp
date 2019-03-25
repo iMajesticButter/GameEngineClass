@@ -58,7 +58,7 @@ namespace Levels {
 		
 		//sprite = new Sprite(mesh);
 
-		transform = new Transform(Vector2D(0, 0), 0, Vector2D(200, 200));
+		transform = new Transform(Vector2D(0, 0), 0, Vector2D(50, 50));
 
 		physics = new Physics(transform);
 
@@ -66,7 +66,7 @@ namespace Levels {
 		physics->SetAngularVelocity(0);
 		
 		Physics::Gravity = Vector2D(0, 0);
-		Physics::AirDencity = 0.2f;
+		Physics::AirDencity = 0.0f;
 
 		sprite = new Sprite(transform, mesh, Colors::White, ss, 0);
 
