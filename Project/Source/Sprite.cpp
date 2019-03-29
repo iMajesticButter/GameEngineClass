@@ -7,6 +7,7 @@
 #include "Sprite.h"
 #include "SpriteSource.h"
 #include "Transform.h"
+#include "GameObject.h"
 
 #include <Vector2D.h>
 #include <Graphics.h>
@@ -17,22 +18,30 @@
 //------------------------------------------------------------------------------
 
 // Create a new sprite object.
-Sprite::Sprite(Transform* transform) {
+Sprite::Sprite() : Component("Sprite") {
 
 	m_frameIndex = 0;
 	m_spriteSource = nullptr;
 	m_mesh = nullptr;
 	m_color = Colors::White;
-	m_transform = transform;
 
 }
 
-Sprite::Sprite(Transform* transform, Mesh* mesh, Color color, SpriteSource* spriteSource, unsigned int frameIndex) {
+Sprite::Sprite(Mesh* mesh, Color color, SpriteSource* spriteSource, unsigned int frameIndex) : Component("Sprite") {
 	m_mesh = mesh;
 	m_color = color;
 	m_spriteSource = spriteSource;
 	m_frameIndex = frameIndex;
-	m_transform = transform;
+}
+
+void Sprite::Initialize() {
+
+	m_transform = (Transform*)GetOwner()->GetComponent("Transform");
+
+}
+
+Component* Sprite::Clone() const {
+	return new Sprite(*this);
 }
 
 // Draw a sprite (Sprite can be textured or untextured).

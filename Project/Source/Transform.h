@@ -15,6 +15,8 @@
 // Include Files:
 //------------------------------------------------------------------------------
 
+#include "Component.h"
+
 #include <Matrix2D.h>
 
 //------------------------------------------------------------------------------
@@ -26,8 +28,7 @@
 // An example of the structure to be defined in Transform.h.
 // You are free to change the contents of this structure as long as you do not
 //   change the public method declarations declared in the header.
-class Transform
-{
+class Transform : Component {
 public:
 	//------------------------------------------------------------------------------
 	// Public Functions:
@@ -52,6 +53,8 @@ public:
 	//   rotation	 = Rotation of the object about the z-axis.
 	//	 scale = Width and height of the object.
 	Transform(Vector2D translation = Vector2D(), float rotation = 0, Vector2D scale = Vector2D(50, 50));
+
+	Component* Clone() const;
 
 	// Get the transform matrix, based upon translation, rotation and scale settings.
 	// Returns:

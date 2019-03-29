@@ -3,8 +3,12 @@
 //------------------------------------------------------------------------------
 
 #include "stdafx.h"
+
 #include "Animation.h"
+
 #include "Sprite.h"
+#include "GameObject.h"
+
 
 
 //------------------------------------------------------------------------------
@@ -14,8 +18,7 @@
 // Construct a new animation object.
 // Params:
 //   sprite = The sprite this animation will be manipulating.
-Animation::Animation(Sprite* sprite) {
-	m_sprite = sprite;
+Animation::Animation() : Component("Animation") {
 	m_frameCount = 0;
 	m_frameDelay = 0;
 	m_frameDuration = 0;
@@ -24,6 +27,14 @@ Animation::Animation(Sprite* sprite) {
 	m_isDone = false;
 	m_isLooping = false;
 	m_isRunning = false;
+}
+
+void Animation::Initialize() {
+	m_sprite = (Sprite*)GetOwner()->GetComponent("Sprite");
+}
+
+Component* Animation::Clone() const {
+	return new Animation(*this);
 }
 
 // Play a simple animation sequence (0 .. frameCount).

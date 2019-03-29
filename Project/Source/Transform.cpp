@@ -15,7 +15,7 @@
 // Params:
 //	 x = Initial world position on the x-axis.
 //	 y = Initial world position on the y-axis.
-Transform::Transform(float x, float y) {
+Transform::Transform(float x, float y) : Component("Transform") {
 
 	m_translation = Vector2D(x, y);
 	m_rotation = 0;
@@ -28,7 +28,7 @@ Transform::Transform(float x, float y) {
 //	 translation = World position of the object.
 //   scale		 = Width and height of the object.
 //   rotation	 = Rotation of the object about the z-axis.
-Transform::Transform(Vector2D translation, Vector2D scale, float rotation) {
+Transform::Transform(Vector2D translation, Vector2D scale, float rotation) : Component("transform") {
 
 	m_translation = translation;
 	m_scale = scale;
@@ -41,12 +41,16 @@ Transform::Transform(Vector2D translation, Vector2D scale, float rotation) {
 //	 translation = World position of the object.
 //   rotation	 = Rotation of the object about the z-axis.
 //	 scale = Width and height of the object.
-Transform::Transform(Vector2D translation, float rotation, Vector2D scale) {
+Transform::Transform(Vector2D translation, float rotation, Vector2D scale) : Component("transform") {
 
 	m_translation = translation;
 	m_rotation = rotation;
 	m_scale = scale;
 
+}
+
+Component* Transform::Clone() const {
+	return new Transform(*this);
 }
 
 // Get the transform matrix, based upon translation, rotation and scale settings.

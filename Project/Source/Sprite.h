@@ -17,6 +17,8 @@
 
 #include "Color.h"
 
+#include "Component.h"
+
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -33,16 +35,18 @@ typedef class Transform Transform;
 
 // You are free to change the contents of this structure as long as you do not
 //   change the public interface declared in the header.
-class Sprite
-{
+class Sprite : Component {
 public:
 	//------------------------------------------------------------------------------
 	// Public Functions:
 	//------------------------------------------------------------------------------
 
 	// Create a new sprite object.
-	Sprite(Transform* transform);
-	Sprite(Transform* transform, Mesh* mesh = nullptr, Color color = Colors::White, SpriteSource* spriteSource = nullptr, unsigned int frameIndex = 0);
+	Sprite();
+	Sprite(Mesh* mesh = nullptr, Color color = Colors::White, SpriteSource* spriteSource = nullptr, unsigned int frameIndex = 0);
+
+	void Initialize();
+	Component* Clone() const;
 
 	// Draw a sprite (Sprite can be textured or untextured).
 	void Draw();

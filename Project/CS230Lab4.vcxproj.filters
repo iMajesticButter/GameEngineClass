@@ -28,6 +28,9 @@
     <Filter Include="Helper">
       <UniqueIdentifier>{701b24f6-f186-4212-b2f3-a56b33de49c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="High-Level API\ObjectManagment">
+      <UniqueIdentifier>{1e604601-721c-47a4-a3a0-be2895be4acb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp" />
@@ -64,11 +67,23 @@
     <ClCompile Include="Source\Physics.cpp">
       <Filter>High-Level API\Transforms</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Ship.cpp">
-      <Filter>Game\Behaviors</Filter>
-    </ClCompile>
     <ClCompile Include="Source\MathUtil.cpp">
       <Filter>Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Component.cpp">
+      <Filter>High-Level API\ObjectManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameObject.cpp">
+      <Filter>High-Level API\ObjectManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Archetypes.cpp">
+      <Filter>High-Level API\ObjectManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Ship-OLD.cpp">
+      <Filter>Game\Behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Ship.cpp">
+      <Filter>Game\Behaviors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +125,21 @@
     </ClInclude>
     <ClInclude Include="Source\MathUtil.h">
       <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Component.h">
+      <Filter>High-Level API\ObjectManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameObject.h">
+      <Filter>High-Level API\ObjectManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameObjectManager.h">
+      <Filter>High-Level API\ObjectManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Archetypes.h">
+      <Filter>High-Level API\ObjectManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Ship.h">
+      <Filter>Game\Behaviors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -15,6 +15,8 @@
 // Include Files:
 //------------------------------------------------------------------------------
 
+#include "Component.h"
+
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -28,8 +30,7 @@ typedef class Sprite Sprite;
 //------------------------------------------------------------------------------
 // You are free to change the contents of this class as long as you do not
 // change the public functions declared in the header.
-class Animation
-{
+class Animation : Component {
 public:
 	//------------------------------------------------------------------------------
 	// Public Functions:
@@ -38,7 +39,10 @@ public:
 	// Construct a new animation object.
 	// Params:
 	//   sprite = The sprite this animation will be manipulating.
-	Animation(Sprite* sprite);
+	Animation();
+
+	void Initialize();
+	Component* Clone() const ;
 
 	// Play a simple animation sequence (0 .. frameCount).
 	// Params:

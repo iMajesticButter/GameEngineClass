@@ -6,6 +6,7 @@
 
 #include "Physics.h"
 #include "Transform.h"
+#include "GameObject.h"
 
 //------------------------------------------------------------------------------
 
@@ -23,7 +24,7 @@ float Physics::AirDencity = 0.01225f;
 // Create a new physics component.
 // Params:
 //   transform - The transform of the object.
-Physics::Physics(Transform* transform) {
+Physics::Physics() : Component("Physics") {
 
 	m_velocity = Vector2D(0, 0);
 	m_angularVelocity = 0;
@@ -31,10 +32,17 @@ Physics::Physics(Transform* transform) {
 	m_forcesSum = Vector2D(0, 0);
 	m_acceleration = Vector2D(0, 0);
 	m_oldTranslation = Vector2D(0, 0);
-	m_transform = transform;
 	m_dragCd = 0.1f;
 	m_aDragCd = 0.1f;
 
+}
+
+void Physics::Initialize() {
+	m_transform = (Transform*)GetOwner()->GetComponent("Transform");
+}
+
+Component* Physics::Clone() const {
+	return new Physics(*this);
 }
 
 // Reset acceleration.

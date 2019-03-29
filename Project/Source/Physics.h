@@ -15,6 +15,8 @@
 // Include Files:
 //------------------------------------------------------------------------------
 
+#include "Component.h"
+
 #include <Vector2D.h>
 
 //------------------------------------------------------------------------------
@@ -30,8 +32,7 @@ class Transform;
 //------------------------------------------------------------------------------
 
 // An example of the structure to be defined in Physics.c.
-class Physics
-{
+class Physics : Component {
 public:
 	//------------------------------------------------------------------------------
 	// Public Functions:
@@ -40,7 +41,10 @@ public:
 	// Create a new physics component.
 	// Params:
 	//   transform - The transform of the object.
-	Physics(Transform* transform);
+	Physics();
+
+	void Initialize();
+	Component* Clone() const;
 
 	// Reset acceleration.
 	// Params:

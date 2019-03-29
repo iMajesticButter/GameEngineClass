@@ -12,6 +12,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Animation.cpp" />
+    <ClCompile Include="Source\Archetypes.cpp" />
+    <ClCompile Include="Source\Component.cpp" />
+    <ClCompile Include="Source\GameObject.cpp" />
     <ClCompile Include="Source\Level.cpp" />
     <ClCompile Include="Source\Level1.cpp" />
     <ClCompile Include="Source\Level2.cpp" />
@@ -19,6 +22,7 @@
     <ClCompile Include="Source\MathUtil.cpp" />
     <ClCompile Include="Source\MeshHelper.cpp" />
     <ClCompile Include="Source\Physics.cpp" />
+    <ClCompile Include="Source\Ship-OLD.cpp" />
     <ClCompile Include="Source\Ship.cpp" />
     <ClCompile Include="Source\Space.cpp" />
     <ClCompile Include="Source\Sprite.cpp" />
@@ -31,13 +35,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Animation.h" />
+    <ClInclude Include="Source\Archetypes.h" />
     <ClInclude Include="Source\Behaviors.h" />
+    <ClInclude Include="Source\Component.h" />
+    <ClInclude Include="Source\GameObject.h" />
+    <ClInclude Include="Source\GameObjectManager.h" />
     <ClInclude Include="Source\Level.h" />
     <ClInclude Include="Source\Level1.h" />
     <ClInclude Include="Source\Level2.h" />
     <ClInclude Include="Source\MathUtil.h" />
     <ClInclude Include="Source\MeshHelper.h" />
     <ClInclude Include="Source\Physics.h" />
+    <ClInclude Include="Source\Ship.h" />
     <ClInclude Include="Source\Space.h" />
     <ClInclude Include="Source\Sprite.h" />
     <ClInclude Include="Source\SpriteSource.h" />
