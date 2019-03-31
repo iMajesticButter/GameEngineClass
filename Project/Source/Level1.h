@@ -30,6 +30,7 @@ typedef class Sprite Sprite;
 typedef class Animation Animation;
 typedef class Transform Transform;
 typedef class Physics Physics;
+typedef class GameObject GameObject;
 
 //------------------------------------------------------------------------------
 // Public Structures:
@@ -86,6 +87,8 @@ namespace Levels
 		Transform* transform;
 
 		Physics* physics;
+
+		GameObject* ship;
 
 	};
 }

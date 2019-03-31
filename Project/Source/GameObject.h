@@ -17,6 +17,8 @@
 
 #include <BetaObject.h>
 
+#include <vector>
+
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -74,7 +76,7 @@ public:
 	// Retrieves the component with the given name if it exists.
 	// Params:
 	//   name = The name of the component to find.
-	Component* GetComponent(const std::string& name);
+	Component* GetComponent(const std::string& comp_name);
 	
 	// Mark an object for destruction.
 	void Destroy();
@@ -93,8 +95,7 @@ private:
 	//------------------------------------------------------------------------------
 
 	// Components
-	Component* components[25];
-	unsigned numComponents;
+	std::vector<Component*> components;
 
 	// Whether the object has been marked for destruction.
 	bool isDestroyed;

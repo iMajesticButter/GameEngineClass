@@ -43,18 +43,18 @@ public:
 	//   transform - The transform of the object.
 	Physics();
 
-	void Initialize();
+	void Initialize() override;
 	Component* Clone() const;
 
 	// Reset acceleration.
 	// Params:
 	//	 dt = Change in time (in seconds) since the last game loop.
-	void Update(float dt);
+	void Update(float dt) override;
 
 	// Update velocity and translation.
 	// Params:
 	//	 dt = Change in time (in seconds) since the last fixed update.
-	void FixedUpdate(float dt);
+	void FixedUpdate(float dt) override;
 
 	// Set the velocity of a physics component.
 	// Params:

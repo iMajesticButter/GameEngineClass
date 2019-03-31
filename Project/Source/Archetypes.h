@@ -41,7 +41,7 @@ namespace Archetypes
 	//   mesh  = The mesh to use for the object's sprite.
 	// Returns:
 	//	 A pointer to the newly constructed game object
-	GameObject* CreateShip(Mesh* mesh);
+	GameObject* CreateShip();
 
 	// Create the archetype for the bullet object.
 	// Params:

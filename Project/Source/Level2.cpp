@@ -34,7 +34,7 @@ namespace Levels {
 	// Params:
 	//	 dt = Change in time (in seconds) since the last game loop.
 	void Level2::Update(float dt) {
-		
+		UNREFERENCED_PARAMETER(dt);
 	}
 
 	// Shutdown any memory associated with Level 2.

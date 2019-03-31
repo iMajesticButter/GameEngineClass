@@ -17,6 +17,7 @@
 
 #include <BetaObject.h>
 #include "GameObject.h"
+#include <vector>
 
 //------------------------------------------------------------------------------
 
@@ -33,8 +34,7 @@ class Vector2D;
 
 // You are free to change the contents of this structure as long as you do not
 //   change the public functions declared in the header.
-class GameObjectManager : public BetaObject
-{
+class GameObjectManager : public BetaObject {
 public:
 	//------------------------------------------------------------------------------
 	// Public Functions:
@@ -112,17 +112,13 @@ private:
 	//------------------------------------------------------------------------------
 	
 	// Objects
-	static const size_t maxObjects = 200;
-	GameObject* gameObjectActiveList[maxObjects];
-	size_t numObjects;
+	std::vector<GameObject*> gameObjectActiveList;
 	
 	// Archetypes
-	static const size_t maxArchetypes = 30;
-	GameObject* gameObjectArchetypes[maxArchetypes];
-	size_t numArchetypes;
+	std::vector<GameObject*> gameObjectArchetypes;
 	
 	// Time
-	const float fixedUpdateDt;
+	const float fixedUpdateDt = 1 / 60;
 	float timeAccumulator;
 };
 

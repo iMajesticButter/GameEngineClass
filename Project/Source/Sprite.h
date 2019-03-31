@@ -45,11 +45,11 @@ public:
 	Sprite();
 	Sprite(Mesh* mesh = nullptr, Color color = Colors::White, SpriteSource* spriteSource = nullptr, unsigned int frameIndex = 0);
 
-	void Initialize();
+	void Initialize() override;
 	Component* Clone() const;
 
 	// Draw a sprite (Sprite can be textured or untextured).
-	void Draw();
+	void Draw() override;
 
 	// Set a sprite's transparency (between 0.0f and 1.0f).
 	// Params:

@@ -41,7 +41,7 @@ public:
 	//   sprite = The sprite this animation will be manipulating.
 	Animation();
 
-	void Initialize();
+	void Initialize() override;
 	Component* Clone() const ;
 
 	// Play a simple animation sequence (0 .. frameCount).
@@ -55,7 +55,7 @@ public:
 	// Update the animation.
 	// Params:
 	//	 dt = Change in time (in seconds) since the last game loop.
-	void Update(float dt);
+	void Update(float dt) override;
 
 	// Determine if the animation has reached the end of its sequence.
 	// Returns:

@@ -2,6 +2,11 @@
 
 #include "Component.h"
 
+#include "PID.h"
+
+typedef class Transform Transform;
+typedef class Physics Physics;
+
 namespace Behaviors {
 
 	class Ship : Component {
@@ -9,9 +14,9 @@ namespace Behaviors {
 
 		Ship(float p = 1, float i = 0, float d = 0.3f, float maxAngualar = 0.45f, float movementSpeed = 325);
 
-		void Initialize();
+		void Initialize() override;
 
-		void Update(float dt);
+		void Update(float dt) override;
 
 		Component* Clone() const;
 	private:
@@ -19,8 +24,10 @@ namespace Behaviors {
 		Transform* m_transform = nullptr;
 		Physics* m_physics = nullptr;
 
-		float m_lastError;
-		float m_accError;
+		float m_maxAngular;
+		float m_movementSpeed;
+
+		MathUtil::PID m_pid;
 
 	};
 
