@@ -15,6 +15,7 @@
     <ClCompile Include="Source\Archetypes.cpp" />
     <ClCompile Include="Source\Component.cpp" />
     <ClCompile Include="Source\GameObject.cpp" />
+    <ClCompile Include="Source\GameObjectManager.cpp" />
     <ClCompile Include="Source\Level.cpp" />
     <ClCompile Include="Source\Level1.cpp" />
     <ClCompile Include="Source\Level2.cpp" />

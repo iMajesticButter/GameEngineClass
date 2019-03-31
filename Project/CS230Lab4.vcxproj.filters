@@ -88,6 +88,9 @@
     <ClCompile Include="Source\PID.cpp">
       <Filter>Helper</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GameObjectManager.cpp">
+      <Filter>High-Level API\ObjectManagment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\stdafx.h">
