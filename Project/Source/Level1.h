@@ -70,25 +70,7 @@ namespace Levels
 		// Private Variables:
 		//------------------------------------------------------------------------------
 
-		// Meshe and texture for sprite source
-		Mesh* mesh;
-		Texture* texture;
 
-		// Sprite and animation variables
-		Sprite* sprite;
-
-		// Level data
-		unsigned lives;
-
-		SpriteSource* ss;
-
-		Animation* anim;
-
-		Transform* transform;
-
-		Physics* physics;
-
-		GameObject* ship;
 
 	};
 }

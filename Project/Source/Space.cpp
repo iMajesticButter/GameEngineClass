@@ -17,12 +17,14 @@ Space::Space(const std::string& name) : BetaObject(name) {
 	m_paused = false;
 	m_currentLevel = nullptr;
 	m_nextLevel = nullptr;
+	m_objectManager = new GameObjectManager(this);
 }
 
 // Destructor
 Space::~Space() {
 	delete m_currentLevel;
 	delete m_nextLevel;
+	delete m_objectManager;
 }
 
 // Updates the state manager and object manager.
@@ -37,17 +39,24 @@ void Space::Update(float dt) {
 		return;
 	}
 
-	if (m_currentLevel != nullptr && !m_paused) {
+	if (m_currentLevel != nullptr) {
 		m_currentLevel->Update(dt);
 	}
+
+	m_objectManager->Update(dt);
 
 }
 
 // Shuts down the object manager
 void Space::Shutdown() {
 	if (m_currentLevel != nullptr) {
+
 		m_currentLevel->Shutdown();
 		m_currentLevel->Unload();
+
+		m_objectManager->Shutdown();
+		m_objectManager->Unload();
+
 		delete m_currentLevel;
 		m_currentLevel = nullptr;
 	}
@@ -100,12 +109,14 @@ void Space::ChangeLevel() {
 	//shutdown level
 	if (m_currentLevel != nullptr) {
 		m_currentLevel->Shutdown();
+		m_objectManager->Shutdown();
 	}
 
 	//skip if restarting
 	if (m_currentLevel != m_nextLevel) {
 		if (m_currentLevel != nullptr) {
 			m_currentLevel->Unload();
+			m_objectManager->Unload();
 			delete m_currentLevel;
 		}
 		m_currentLevel = m_nextLevel;
@@ -116,6 +127,11 @@ void Space::ChangeLevel() {
 
 	m_nextLevel = nullptr;
 
+}
+
+// Returns the object manager, which you can use to retrieve and add objects.
+GameObjectManager& Space::GetObjectManager() {
+	return *m_objectManager;
 }
 
 	

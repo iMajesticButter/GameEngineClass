@@ -90,6 +90,8 @@ public:
 	//   objectName = The name of the objects that should be counted.
 	unsigned GetObjectCount(const std::string& objectName) const;
 
+	static GameObjectManager* GetInstance();
+
 private:
 	// Disable copy constructor and assignment operator
 	GameObjectManager(const GameObjectManager&) = delete;
@@ -112,14 +114,15 @@ private:
 	//------------------------------------------------------------------------------
 	
 	// Objects
-	std::vector<GameObject*> gameObjectActiveList;
+	std::vector<GameObject*> m_gameObjectActiveList;
 	
 	// Archetypes
-	std::vector<GameObject*> gameObjectArchetypes;
+	std::vector<GameObject*> m_gameObjectArchetypes;
 	
 	// Time
-	const float fixedUpdateDt = 1 / 60;
-	float timeAccumulator;
+	const float m_fixedUpdateDt = 1.0f / 60.0f;
+	float m_timeAccumulator;
+
 };
 
 //------------------------------------------------------------------------------

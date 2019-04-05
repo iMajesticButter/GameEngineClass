@@ -20,6 +20,7 @@
 #include "Animation.h"
 #include "Archetypes.h"
 #include "GameObject.h"
+#include "EdgeLoop.h"
 
 #include <iostream>
 #include <Engine.h>
@@ -43,8 +44,11 @@ namespace Levels {
 
 	// Initialize the memory associated with Level 1.
 	void Level1::Initialize() {
-		ship = Archetypes::CreateShip();
-		ship->Initialize();
+		GameObject* ship = Archetypes::CreateShip();
+		ship->AddComponent((Component*)new Behaviors::EdgeLoop());
+		GetSpace()->GetObjectManager().AddObject(*ship);
+		GetSpace()->GetObjectManager().AddArchetype(*Archetypes::CreateShip());
+
 
 		Physics::AirDencity = 0;
 		Physics::Gravity = Vector2D(0, 0);
@@ -55,19 +59,17 @@ namespace Levels {
 	// Params:
 	//	 dt = Change in time (in seconds) since the last game loop.
 	void Level1::Update(float dt) {
-		ship->Update(dt);
-		ship->FixedUpdate(dt);
-		ship->Draw();
+		UNREFERENCED_PARAMETER(dt);
 	}
 
 	// Shutdown any memory associated with Level 1.
 	void Level1::Shutdown() {
-		ship->Shutdown();
+		
 	}
 
 	// Unload the resources associated with Level 1.
 	void Level1::Unload() {
-		ship->Unload();
+		
 	}
 
 }

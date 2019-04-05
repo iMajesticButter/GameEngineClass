@@ -34,6 +34,7 @@ namespace Archetypes {
 		GameObject* ship = new GameObject("Ship");
 
 		Transform* transform = new Transform(0, 0);
+		//transform->SetScale(Vector2D(10, 10));
 		Physics* physics = new Physics();
 
 		Mesh* mesh = MeshHelper::CreateQuadMesh(Vector2D(1 / 1, 1 / 1), Vector2D(1 * 1, 1 * 1));

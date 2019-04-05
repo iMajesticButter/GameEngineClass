@@ -12,7 +12,7 @@ namespace Behaviors {
 	class Ship : Component {
 	public:
 
-		Ship(float p = 1, float i = 0, float d = 0.3f, float maxAngualar = 0.45f, float movementSpeed = 325);
+		Ship(float p = 1, float i = 0, float d = 1, float maxAngualar = 0.45f, float movementSpeed = 325);
 
 		void Initialize() override;
 

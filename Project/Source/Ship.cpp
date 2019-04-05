@@ -6,6 +6,10 @@
 #include "Physics.h"
 #include "Transform.h"
 #include "MathUtil.h"
+#include "Space.h"
+#include "GameObjectManager.h"
+#include "Sprite.h"
+#include "Death.h"
 
 #include <Input.h>
 #include <Graphics.h>
@@ -26,7 +30,6 @@ namespace Behaviors {
 	}
 
 	void Ship::Update(float dt) {
-
 		//---get required variables---
 
 		//get mouse position
@@ -49,7 +52,12 @@ namespace Behaviors {
 		//---pid controller to turn to mouse---
 		//get error
 		//float error = abs(mouseA - shipA);
-		float error = abs(atan2(sin(shipA - mouseA), cos(shipA - mouseA)));
+		//if shift is pressed, stop rotating
+
+		float error = 0;
+
+		error = abs(atan2(sin(shipA - mouseA), cos(shipA - mouseA)));
+
 
 		float angularForce = m_pid.Run(error, dt);
 
@@ -59,7 +67,7 @@ namespace Behaviors {
 		Vector2D n = Vector2D(cos(shipA + (180 * (float)MathUtil::DegToRad)), sin(shipA + (180 * (float)MathUtil::DegToRad)));
 
 		//Vector2D n = Vector2D(cos(transform->GetRotation()), sin(transform->GetRotation()));
-
+		
 		if (mouseVec.DotProduct(n) > 0) {
 			//accute
 			m_physics->AddAngularForce(-angularForce * 0.1f);
@@ -68,6 +76,7 @@ namespace Behaviors {
 			//obtuse
 			m_physics->AddAngularForce(angularForce * 0.1f);
 		}
+	
 
 
 
@@ -76,6 +85,25 @@ namespace Behaviors {
 		//move when w is pressed
 		if (Input::GetInstance().CheckHeld('W')) {
 			m_physics->AddForce(shipVec * m_movementSpeed);
+		}
+
+
+		//---shooting---
+
+		//shoot MOAR ROCKETS
+		if (Input::GetInstance().CheckTriggered(VK_SPACE)) {
+			GameObject* newShipptr = new GameObject(*GetOwner()->GetSpace()->GetObjectManager().GetArchetypeByName("Ship"));
+			if (newShipptr != nullptr) {
+				((Transform*)newShipptr->GetComponent("Transform"))->SetTranslation(m_transform->GetTranslation());
+				((Transform*)newShipptr->GetComponent("Transform"))->SetRotation(m_transform->GetRotation());
+				((Transform*)newShipptr->GetComponent("Transform"))->SetScale(m_transform->GetScale() + Vector2D(-10.0f, -10.0f));
+				((Sprite*)newShipptr->GetComponent("Sprite"))->SetColor(Color(dt, error, angularForce, 1));
+
+				newShipptr->AddComponent((Component*)new Behaviors::Death());
+
+				GetOwner()->GetSpace()->GetObjectManager().AddObject(*newShipptr);
+			}
+			
 		}
 
 	}

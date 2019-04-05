@@ -15,6 +15,7 @@
 // Include Files:
 //------------------------------------------------------------------------------
 
+#include "GameObjectManager.h"
 #include "BetaObject.h"
 
 //------------------------------------------------------------------------------
@@ -71,6 +72,9 @@ public:
 	// Restarts the current level (next level = current)
 	void RestartLevel();
 
+	// Returns the object manager, which you can use to retrieve and add objects.
+	GameObjectManager& GetObjectManager();
+
 private:
 	//------------------------------------------------------------------------------
 	// Private Functions:
@@ -86,6 +90,7 @@ private:
 	bool m_paused;
 	Level* m_currentLevel;
 	Level* m_nextLevel;
+	GameObjectManager* m_objectManager;
 };
 
 //------------------------------------------------------------------------------
