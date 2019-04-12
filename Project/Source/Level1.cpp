@@ -39,15 +39,17 @@ namespace Levels {
 
 	// Load the resources associated with Level 1.
 	void Level1::Load() {
-		
+		m_mesh = MeshHelper::CreateQuadMesh(Vector2D(1 / 1, 1 / 1), Vector2D(1 * 1, 1 * 1));
+
+		m_spriteSource = new SpriteSource("SpaceShip.png", 1, 1);
 	}
 
 	// Initialize the memory associated with Level 1.
 	void Level1::Initialize() {
-		GameObject* ship = Archetypes::CreateShip();
+		GameObject* ship = Archetypes::CreateShip(m_mesh, m_spriteSource);
 		ship->AddComponent((Component*)new Behaviors::EdgeLoop());
 		GetSpace()->GetObjectManager().AddObject(*ship);
-		GetSpace()->GetObjectManager().AddArchetype(*Archetypes::CreateShip());
+		GetSpace()->GetObjectManager().AddArchetype(*Archetypes::CreateShip(m_mesh, m_spriteSource));
 
 
 		Physics::AirDencity = 0;
@@ -69,7 +71,8 @@ namespace Levels {
 
 	// Unload the resources associated with Level 1.
 	void Level1::Unload() {
-		
+		delete m_mesh;
+		delete m_spriteSource;
 	}
 
 }

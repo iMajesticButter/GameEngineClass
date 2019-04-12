@@ -29,17 +29,13 @@ namespace Archetypes {
 	//   mesh  = The mesh to use for the object's sprite.
 	// Returns:
 	//	 A pointer to the newly constructed game object
-	GameObject* CreateShip() {
+	GameObject* CreateShip(Mesh* mesh, SpriteSource* spriteSource) {
 
 		GameObject* ship = new GameObject("Ship");
 
 		Transform* transform = new Transform(0, 0);
 		//transform->SetScale(Vector2D(10, 10));
 		Physics* physics = new Physics();
-
-		Mesh* mesh = MeshHelper::CreateQuadMesh(Vector2D(1 / 1, 1 / 1), Vector2D(1 * 1, 1 * 1));
-
-		SpriteSource* spriteSource = new SpriteSource("SpaceShip.png", 1, 1);
 
 		Sprite* sprite = new Sprite(mesh, Colors::White, spriteSource, 0);
 

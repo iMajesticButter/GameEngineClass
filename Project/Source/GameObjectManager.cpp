@@ -47,6 +47,7 @@ void GameObjectManager::Shutdown(void) {
 	for (int i = 0; i < m_gameObjectActiveList.size(); ++i) {
 		delete m_gameObjectActiveList[i];
 	}
+	m_gameObjectActiveList.clear();
 }
 
 // Unload the game object manager, destroying all object archetypes.
@@ -54,6 +55,7 @@ void GameObjectManager::Unload(void) {
 	for (int i = 0; i < m_gameObjectArchetypes.size(); ++i) {
 		delete m_gameObjectArchetypes[i];
 	}
+	m_gameObjectArchetypes.clear();
 }
 
 // Add a game object to the active game object list.

@@ -70,7 +70,8 @@ namespace Levels
 		// Private Variables:
 		//------------------------------------------------------------------------------
 
-
+		Mesh* m_mesh;
+		SpriteSource* m_spriteSource;
 
 	};
 }

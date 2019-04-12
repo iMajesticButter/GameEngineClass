@@ -21,6 +21,7 @@ SpriteSource::SpriteSource(Texture* texture, int numCols, int numRows) {
 	m_numCols = numCols;
 	m_numRows = numRows;
 	m_texture = texture;
+	m_TextureOwned = false;
 }
 
 // Allocate a new sprite source object.
@@ -32,6 +33,13 @@ SpriteSource::SpriteSource(std::string texture, int numCols, int numRows) {
 	m_numCols = numCols;
 	m_numRows = numRows;
 	m_texture = Texture::CreateTextureFromFile(texture);
+	m_TextureOwned = true;
+}
+
+SpriteSource::~SpriteSource() {
+	if (m_TextureOwned) {
+		delete m_texture;
+	}
 }
 
 // Returns a pointer to the texture, for the purposes of rendering a sprite.

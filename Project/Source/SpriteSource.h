@@ -51,6 +51,8 @@ public:
 	//	 texture = The name of the texture asset to use.
 	SpriteSource(std::string texture, int numCols = 1, int numRows = 1);
 
+	~SpriteSource();
+
 	// Returns a pointer to the texture, for the purposes of rendering a sprite.
 	// Returns:
 	//	 A pointer to the sprite source texture.
@@ -74,6 +76,9 @@ private:
 
 	// Pointer to a texture created using the Alpha Engine.
 	Texture* m_texture;
+
+	//whether or not the texture was created inside this sprite source
+	bool m_TextureOwned = false;
 };
 
 //----------------------------------------------------------------------------
