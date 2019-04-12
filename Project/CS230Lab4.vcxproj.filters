@@ -31,6 +31,9 @@
     <Filter Include="High-Level API\ObjectManagment">
       <UniqueIdentifier>{1e604601-721c-47a4-a3a0-be2895be4acb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="High-Level API\Collision">
+      <UniqueIdentifier>{6cc0b007-86b0-43ba-bd5a-f10900038f63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp" />
@@ -97,6 +100,18 @@
     <ClCompile Include="Source\EdgeLoop.cpp">
       <Filter>Game\Behaviors</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Intersection2D.cpp">
+      <Filter>High-Level API\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collider.cpp">
+      <Filter>High-Level API\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ColliderPoint.cpp">
+      <Filter>High-Level API\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ColliderCircle.cpp">
+      <Filter>High-Level API\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\stdafx.h">
@@ -161,6 +176,27 @@
     </ClInclude>
     <ClInclude Include="Source\EdgeLoop.h">
       <Filter>Game\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collider.h">
+      <Filter>High-Level API\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ColliderCircle.h">
+      <Filter>High-Level API\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ColliderPoint.h">
+      <Filter>High-Level API\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ColliderRectangle.h">
+      <Filter>High-Level API\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Intersection2D.h">
+      <Filter>High-Level API\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ColorChange.h">
+      <Filter>Game\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level3.h">
+      <Filter>Game\Levels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

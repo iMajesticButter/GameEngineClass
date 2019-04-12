@@ -13,11 +13,15 @@
   <ItemGroup>
     <ClCompile Include="Source\Animation.cpp" />
     <ClCompile Include="Source\Archetypes.cpp" />
+    <ClCompile Include="Source\Collider.cpp" />
+    <ClCompile Include="Source\ColliderCircle.cpp" />
+    <ClCompile Include="Source\ColliderPoint.cpp" />
     <ClCompile Include="Source\Component.cpp" />
     <ClCompile Include="Source\Death.cpp" />
     <ClCompile Include="Source\EdgeLoop.cpp" />
     <ClCompile Include="Source\GameObject.cpp" />
     <ClCompile Include="Source\GameObjectManager.cpp" />
+    <ClCompile Include="Source\Intersection2D.cpp" />
     <ClCompile Include="Source\Level.cpp" />
     <ClCompile Include="Source\Level1.cpp" />
     <ClCompile Include="Source\Level2.cpp" />
@@ -41,14 +45,21 @@
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Archetypes.h" />
     <ClInclude Include="Source\Behaviors.h" />
+    <ClInclude Include="Source\Collider.h" />
+    <ClInclude Include="Source\ColliderCircle.h" />
+    <ClInclude Include="Source\ColliderPoint.h" />
+    <ClInclude Include="Source\ColliderRectangle.h" />
+    <ClInclude Include="Source\ColorChange.h" />
     <ClInclude Include="Source\Component.h" />
     <ClInclude Include="Source\Death.h" />
     <ClInclude Include="Source\EdgeLoop.h" />
     <ClInclude Include="Source\GameObject.h" />
     <ClInclude Include="Source\GameObjectManager.h" />
+    <ClInclude Include="Source\Intersection2D.h" />
     <ClInclude Include="Source\Level.h" />
     <ClInclude Include="Source\Level1.h" />
     <ClInclude Include="Source\Level2.h" />
+    <ClInclude Include="Source\Level3.h" />
     <ClInclude Include="Source\MathUtil.h" />
     <ClInclude Include="Source\MeshHelper.h" />
     <ClInclude Include="Source\Physics.h" />
