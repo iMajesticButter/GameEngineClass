@@ -17,6 +17,8 @@
 
 #include "Collider.h"
 
+#include <Shapes2D.h>
+
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -64,13 +66,15 @@ public:
 	//	 Return the results of the collision check.
 	bool IsCollidingWith(const Collider& other) const override;
 
+	Circle GetCircle();
+
 private:
 	//------------------------------------------------------------------------------
 	// Private Variables:
 	//------------------------------------------------------------------------------
 
 	// Radius of the circle collider.
-	float radius;
+	float m_radius;
 };
 
 //------------------------------------------------------------------------------

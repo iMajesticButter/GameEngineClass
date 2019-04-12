@@ -80,10 +80,13 @@ public:
 	//   handler = A pointer to the collision handler function.
 	void SetCollisionHandler(CollisionEventHandler handler);
 
+	Transform* GetTransform() const;
+	Physics* GetPhysics() const;
+
 protected:
 	// Component pointers
-	Transform* transform;
-	Physics* physics;
+	Transform* m_transform;
+	Physics* m_physics;
 
 private:
 	//------------------------------------------------------------------------------
@@ -91,10 +94,10 @@ private:
 	//------------------------------------------------------------------------------
 
 	// The type of collider used by this component.
-	ColliderType type;
+	ColliderType m_type;
 
 	// Function pointer for collision handler
-	CollisionEventHandler handler;
+	CollisionEventHandler m_handler;
 };
 
 //------------------------------------------------------------------------------
