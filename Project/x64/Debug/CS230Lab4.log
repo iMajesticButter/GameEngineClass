@@ -1,6 +1,4 @@
-﻿  Archetypes.cpp
-  Level1.cpp
-  Sprite.cpp
-  SpriteSource.cpp
+﻿  Intersection2D.cpp
+  Level3.cpp
   Generating Code...
   CS230Lab4.vcxproj -> C:\Users\projectfun_user\Documents\GitHub\GameEngineClass\Project\\x64\Debug\CS230Lab4.exe

@@ -15,6 +15,8 @@
 // Include Files:
 //------------------------------------------------------------------------------
 
+#include <Vector2D.h>
+
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -57,6 +59,11 @@ namespace Archetypes
 	// Returns:
 	//	 A pointer to the newly constructed game object
 	GameObject* CreateMonkey(Mesh* mesh, SpriteSource* spriteSource);
+
+	GameObject* CreateCircle(Mesh* mesh, SpriteSource* spriteSource, Vector2D pos, Vector2D vel, float radius);
+	GameObject* CreateRectangle(Mesh* mesh, SpriteSource* spriteSource, Vector2D pos, Vector2D vel, Vector2D extents);
+	GameObject* CreatePoint(Mesh* mesh, SpriteSource* spriteSource, Vector2D pos, Vector2D vel);
+
 }
 
 //----------------------------------------------------------------------------

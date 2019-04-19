@@ -18,6 +18,8 @@
 #include "Collider.h"
 #include "Vector2D.h"
 
+#include <Shapes2D.h>
+
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -65,13 +67,15 @@ public:
 	//	 Return the results of the collision check.
 	bool IsCollidingWith(const Collider& other) const override;
 
+	BoundingRectangle GetRect() const;
+
 private:
 	//------------------------------------------------------------------------------
 	// Private Variables:
 	//------------------------------------------------------------------------------
 
 	// Extents of the rectangle collider.
-	Vector2D extents;
+	Vector2D m_extents;
 };
 
 //------------------------------------------------------------------------------

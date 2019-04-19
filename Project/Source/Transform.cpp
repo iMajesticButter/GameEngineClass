@@ -28,7 +28,7 @@ Transform::Transform(float x, float y) : Component("Transform") {
 //	 translation = World position of the object.
 //   scale		 = Width and height of the object.
 //   rotation	 = Rotation of the object about the z-axis.
-Transform::Transform(Vector2D translation, Vector2D scale, float rotation) : Component("transform") {
+Transform::Transform(Vector2D translation, Vector2D scale, float rotation) : Component("Transform") {
 
 	m_translation = translation;
 	m_scale = scale;
@@ -41,7 +41,7 @@ Transform::Transform(Vector2D translation, Vector2D scale, float rotation) : Com
 //	 translation = World position of the object.
 //   rotation	 = Rotation of the object about the z-axis.
 //	 scale = Width and height of the object.
-Transform::Transform(Vector2D translation, float rotation, Vector2D scale) : Component("transform") {
+Transform::Transform(Vector2D translation, float rotation, Vector2D scale) : Component("Transform") {
 
 	m_translation = translation;
 	m_rotation = rotation;

@@ -21,7 +21,7 @@
 // Constructor for circle collider.
 // Params:
 //   radius = The radius of the circle.
-ColliderCircle::ColliderCircle(float radius = 50.0f) : Collider(ColliderType::ColliderTypeCircle) {
+ColliderCircle::ColliderCircle(float radius) : Collider(ColliderType::ColliderTypeCircle) {
 	m_radius = radius;
 }
 
@@ -59,15 +59,16 @@ void ColliderCircle::SetRadius(float radius) {
 //	 Return the results of the collision check.
 bool ColliderCircle::IsCollidingWith(const Collider& other) const {
 	if (other.GetType() == ColliderType::ColliderTypeCircle) {
-		return CircleCircleIntersection(GetCircle(), (ColliderCircle)other.GetCircle());
+		return CircleCircleIntersection(GetCircle(), ((ColliderCircle&)other).GetCircle());
 	} else if (other.GetType() == ColliderType::ColliderTypeRectangle) {
-
+		return RectangleCircleIntersection(((ColliderRectangle&)other).GetRect(), GetCircle());
 	} else if (other.GetType() == ColliderType::ColliderTypePoint) {
-
+		return PointCircleIntersection(other.GetTransform()->GetTranslation(), GetCircle());
 	}
+	return false;
 }
 
-Circle ColliderCircle::GetCircle() {
+Circle ColliderCircle::GetCircle() const {
 	Circle c(m_transform->GetTranslation(), m_radius);
 	return c;
 }

@@ -69,15 +69,15 @@ namespace Behaviors
 		//------------------------------------------------------------------------------
 
 		// Components
-		Sprite* sprite;
+		Sprite* m_sprite;
 
 		// Properties
-		Color normalColor;
-		Color collidedColor;
-		float collidedColorTime;
+		Color m_normalColor;
+		Color m_collidedColor;
+		float m_collidedColorTime;
 
 		// Other variables
-		bool collided;
-		float timer;
+		bool m_collided;
+		float m_timer;
 	};
 }

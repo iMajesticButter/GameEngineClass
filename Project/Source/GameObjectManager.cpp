@@ -8,6 +8,7 @@
 #include "GameObjectManager.h"
 
 #include "Space.h"
+#include "Collider.h"
 
 
 //------------------------------------------------------------------------------
@@ -153,9 +154,42 @@ void GameObjectManager::FixedUpdate(float dt) {
 		for (int i = 0; i < updateList.size(); ++i) {
 			updateList[i]->FixedUpdate(m_fixedUpdateDt);
 		}
+
+		CheckCollisions();
+
 		m_timeAccumulator -= m_fixedUpdateDt;
 	}
 
+}
+
+// Check for object collisions
+void GameObjectManager::CheckCollisions() {
+	for (int i = 0; i < m_gameObjectActiveList.size(); ++i) {
+
+		if (m_gameObjectActiveList[i]->IsDestroyed()) {
+			continue;
+		}
+
+		Collider* col = (Collider*)m_gameObjectActiveList[i]->GetComponent("Collider");
+		if (col == nullptr) {
+			continue;
+		}
+
+		for (int j = i+1; j < m_gameObjectActiveList.size(); ++j) {
+
+			if (m_gameObjectActiveList[j]->IsDestroyed()) {
+				continue;
+			}
+
+			Collider* colOther = (Collider*)m_gameObjectActiveList[j]->GetComponent("Collider");
+			if (colOther == nullptr) {
+				continue;
+			}
+
+			col->CheckCollision(*colOther);
+
+		}
+	}
 }
 
 // Destroy any objects marked for destruction.

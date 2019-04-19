@@ -66,7 +66,7 @@ public:
 	//	 Return the results of the collision check.
 	bool IsCollidingWith(const Collider& other) const override;
 
-	Circle GetCircle();
+	Circle GetCircle() const;
 
 private:
 	//------------------------------------------------------------------------------

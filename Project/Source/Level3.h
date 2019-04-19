@@ -66,13 +66,13 @@ namespace Levels
 		//------------------------------------------------------------------------------
 
 		// Resources
-		Mesh* meshQuad;
-		SpriteSource* spriteSourceCircle;
-		Texture* textureCircle;
+		Mesh* m_meshQuad;
+		SpriteSource* m_spriteSourceCircle;
+		SpriteSource* m_spriteSourceRect;
 
 		// Properties
-		float circleSpeed;
-		float pointSpeed;
+		float m_circleSpeed;
+		float m_pointSpeed;
 	};
 }
 

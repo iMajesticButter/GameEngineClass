@@ -10,7 +10,6 @@
 #include "Intersection2D.h"
 #include "ColliderCircle.h"
 #include "ColliderRectangle.h"
-#include "Shapes2D.h"
 
 #include <Graphics.h>
 #include <DebugDraw.h>
@@ -43,11 +42,11 @@ void ColliderPoint::Draw() {
 // Returns:
 //	 Return the results of the collision check.
 bool ColliderPoint::IsCollidingWith(const Collider& other) const {
-	if (other.GetType == ColliderType::ColliderTypeCircle) {
-		//return PointCircleIntersection(m_transform->GetTranslation(), (ColliderCircle)other.//get circle);
-	} else if (other.GetType == ColliderType::ColliderTypeRectangle) {
-		//return PointRectangleIntersection(m_transform->GetTranslation(), (ColliderRectangle)other.//get rect)
-	} else if (other.GetType == ColliderType::ColliderTypePoint) {
+	if (other.GetType() == ColliderType::ColliderTypeCircle) {
+		return PointCircleIntersection(m_transform->GetTranslation(), ((ColliderCircle&)other).GetCircle());
+	} else if (other.GetType() == ColliderType::ColliderTypeRectangle) {
+		return PointRectangleIntersection(m_transform->GetTranslation(), ((ColliderRectangle&)other).GetRect());
+	} else if (other.GetType() == ColliderType::ColliderTypePoint) {
 		return m_transform->GetTranslation().DistanceSquared(other.GetTransform()->GetTranslation()) == 0;
 	}
 	return false;

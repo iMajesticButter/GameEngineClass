@@ -21,7 +21,9 @@
 #include "Archetypes.h"
 #include "GameObject.h"
 #include "EdgeLoop.h"
+#include "Level3.h"
 
+#include <Input.h>
 #include <iostream>
 #include <Engine.h>
 #include <Color.h>
@@ -62,6 +64,9 @@ namespace Levels {
 	//	 dt = Change in time (in seconds) since the last game loop.
 	void Level1::Update(float dt) {
 		UNREFERENCED_PARAMETER(dt);
+		if (Input::GetInstance().CheckTriggered('1')) {
+			GetSpace()->SetLevel(new Level3());
+		}
 	}
 
 	// Shutdown any memory associated with Level 1.

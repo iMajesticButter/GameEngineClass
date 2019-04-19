@@ -8,6 +8,8 @@
 
 #include "GameObject.h"
 
+#include <iostream>
+
 //------------------------------------------------------------------------------
 // Public Functions:
 //------------------------------------------------------------------------------
@@ -31,7 +33,7 @@ void Collider::Initialize() {
 void Collider::CheckCollision(const Collider& other) {
 	if (IsCollidingWith(other)) {
 		m_handler(*GetOwner(), *other.GetOwner());
-		other.m_handler(*GetOwner(), *GetOwner());
+		other.m_handler(*other.GetOwner(), *GetOwner());
 	}
 }
 

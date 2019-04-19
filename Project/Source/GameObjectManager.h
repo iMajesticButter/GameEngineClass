@@ -103,6 +103,9 @@ private:
 	// Update object physics using fixed timestep.
 	void FixedUpdate(float dt) override;
 
+	// Check for object collisions
+	void CheckCollisions();
+
 	// Destroy any objects marked for destruction.
 	void DestroyObjects();
 
